@@ -7,7 +7,10 @@
     "dev": "concurrently -k npm:dev:*",
     "dev:films": "nodemon -r esm ./films/index.js",
     "dev:people": "nodemon -r esm ./people/index.js",
-    "dev:gateway": "wait-on tcp:4001 tcp:4002 && nodemon -r esm ./index.js"
+    "dev:gateway": "wait-on tcp:4001 tcp:4002 && nodemon -r esm ./index.js",
+    "subgraph:fetch": "mkdir -p schemas && rover subgraph fetch roverland-j38bkj --name films > ./schemas/films.graphql && rover subgraph fetch roverland-j38bkj --name people > ./schemas/people.graphql",
+    "people:check": "rover subgraph check roverland-j38bkj --name people --schema ./schemas/people.graphql",
+    "films:check": "rover subgraph check roverland-j38bkj --name films --schema ./schemas/films.graphql"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +24,8 @@
     "graphql": "^15.0.0",
     "nodemon": "^2.0.2",
     "wait-on": "^4.0.1"
+  },
+  "devDependencies": {
+    "@apollo/rover": "latest"
   }
 }

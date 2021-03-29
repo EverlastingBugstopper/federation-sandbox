@@ -1,0 +1,9 @@
+subgraphs:
+  films:
+    schema:
+      file: ./schemas/films.graphql
+    routing_url: ""
+  people:
+    schema:
+      file: ./schemas/people.graphql
+    routing_url: ""
